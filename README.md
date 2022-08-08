@@ -1,6 +1,6 @@
 # Mumble
 
-## This project is a frontend for a Real Time Microservices based chat application that uses ReactJS, Redux Toolkit, RadixUI Stitches.
+## This project is a frontend for a Real Time Microservices based chat application that uses ReactJS, Redux Toolkit, RadixUI & Stitches.
 
 Features custom hand-written solutions for [infinite scrolling](https://github.com/dannyboi07/mumbleFE/blob/master/src/components/Chat/MsgDisplay.js#L84), cache handling [here](https://github.com/dannyboi07/mumbleFE/blob/master/src/slices/chatSlice.js#L134) and [here](https://github.com/dannyboi07/mumbleFE/blob/master/src/components/Chat/Chat.js#L63), and [Websocket reconnection logic (Exponential backoff)](https://github.com/dannyboi07/mumbleFE/blob/master/src/components/Home/WsMsgHandler.js#L114).
 
