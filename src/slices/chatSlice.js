@@ -16,7 +16,7 @@ Structure of the state:
         queryOffset: Last query offset used while retrieving this contact's messages,
         queryDone: Boolean that is true when user has finished getting every message from the server through scroll pagination,
         lastAcc: Latest time this a particular object such as this was touched by the user,
-        // So be used while scanning this state to clear "cache" at regular intervals 
+        To be used while scanning this state to clear "cache" at regular intervals 
     }
 ]
 */
@@ -132,6 +132,9 @@ export const chatSlice = createSlice({
 			);
 		},
 		clearCache: (state, action) => {
+            // Triggers every 30 secs. Msgs with a contact last accessed within 30-60 secs are all cleared,
+            // except for only the latest 20 msgs
+            // Msgs with contact last accessed more than a minute ago are all cleared out. 
 			const newAllMsgsState = [];
 			const dateNow = Date.now();
 
@@ -233,99 +236,3 @@ export const selectUnreadMsgs = (contactId, userId) => (state) => {
 };
 
 export default chatSlice.reducer;
-
-// decrementQueryOffset: (state, action) => {
-// 	return state.map((chatsObj) =>
-// 		chatsObj.contactId === action.payload
-// 			? {
-//                     ...chatsObj,
-// 					queryOffset: chatsObj.queryOffset - 10,
-// 					lastAcc: Date.now(),
-// 			  }
-// 			: chatsObj,
-// 	);
-// },
-// setChatOnRefresh: (state) => {
-//     return state.map((chatsObj) => {
-//         return {
-//             ...chatsObj,
-//             messages: [],
-//             queryOffset: 0,
-//             queryDone: false,
-//         };
-//     });
-// },
-
-// const resultState = [];
-// for (let i = 0; i < state.length; i++) {
-// 	if (action.payload.to === state[i].contactId) {
-// 		if (action.payload.status !== "saved") {
-// 			state[i] = state[i].messages.map((message) =>
-// 				Number(message.msg_id) ===
-// 				Number(action.payload.msg_id)
-// 					? {
-// 							...message,
-// 							msg_id: action.payload.msg_id,
-// 							status: action.payload.status,
-//                             time: action.payload.time,
-// 					  }
-// 					: message,
-// 			);
-// 			// resultState.push({
-//             //     ...state[i],
-//             //     newMsgsState
-//             // });
-// 		} else {
-// 			state[i] = state[i].messages.map((message) =>
-// 				message.msg_id === action.payload.msg_uuid
-// 					? {
-// 							...message,
-// 							msg_id: action.payload.msg_id,
-// 							status: action.payload.status,
-//                             time: action.payload.time,
-// 					  }
-// 					: message,
-// 			);
-// 			// resultState.push({
-//             //     ...state[i],
-//             //     newMsgsState
-//             // });
-// 		}
-// 	} // else resultState.push(state[i]);
-// }
-// return resultState;
-
-// console.log(action.payload.msg_uuid);
-// return state.map((chatsObj) => {
-// 	if (action.payload.to === chatsObj.contactId) {
-// 		if (action.payload.status !== "saved") {
-
-// 			return chatsObj.messages.map((message) =>
-// 				Number(message.msg_id) ===
-// 				Number(action.payload.msg_id)
-// 					? {
-// 							...message,
-// 							status: action.payload.status,
-// 					  }
-// 					: message,
-// 			);
-// 		} else {
-//             console.log("triggered reducer's saved")
-// 			chatsObj.messages.map((message) => {
-// 				console.log(
-// 					action.payload.msg_uuid === message.msg_id,
-// 					action.payload.msg_uuid,
-// 					message.msg_id,
-// 				);
-// 				if (action.payload.msg_uuid === message.msg_id) {
-// 					return {
-// 						...message,
-// 						msg_id: action.payload.msg_id,
-// 						status: action.payload.status,
-// 						time: action.payload.time,
-// 					};
-// 				} else return message;
-// 			});
-// 		}
-// 	} else return chatsObj;
-// });

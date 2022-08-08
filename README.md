@@ -1,4 +1,12 @@
-# Getting Started with Create React App and Redux
+# Mumble
+
+## This project is a frontend for a real time microservices based chat application called Mumble that uses ReactJS, Redux Toolkit, RadixUI Stitches.
+
+Features custom hand-written solutions for infinite scrolling [here](https://github.com/dannyboi07/mumbleFE/blob/master/src/components/Chat/MsgDisplay.js#L84), [cache handling](https://github.com/dannyboi07/mumbleFE/blob/master/src/slices/chatSlice.js#L134) and [here](https://github.com/dannyboi07/mumbleFE/blob/master/src/components/Chat/Chat.js#L63), and [Websocket reconnection logic (Exponential backoff)](https://github.com/dannyboi07/mumbleFE/blob/master/src/components/Home/WsMsgHandler.js#L114).
+
+Check out the live project [here](https://mumble.daniel-dev.tech), and the backend [here](https://github.com/dannyboi07/mumbleBE)
+
+## Getting Started with Create React App and Redux
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
 

@@ -60,6 +60,9 @@ function Chat({ userId, wsConn }) {
 		}
 	}, [activeContactId]);
 
+    // Dispatches query to the server, triggers when the active chat contact or the query offset changes, 
+    // and execs the logic as long as there are more msgs to be retrieved (indicated by .queryDone), and 
+    // the offset value is greater than the length of msgs
 	useEffect(() => {
 		// Don't query the server any more after receiving null
 		if (
