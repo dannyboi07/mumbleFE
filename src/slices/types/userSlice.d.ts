@@ -1,0 +1,1 @@
+interface UserState extends User {}

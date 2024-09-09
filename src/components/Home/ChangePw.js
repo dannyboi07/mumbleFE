@@ -181,7 +181,7 @@ function ChangePw() {
 				newDpForm.append("profilePic", newDp);
 
 				fetch(
-					`https://${process.env.REACT_APP_BACKEND_DOM_API}/changeDp`,
+					`http://${process.env.REACT_APP_BACKEND_DOM_API}/changeDp`,
 					{
 						method: "PUT",
 						body: newDpForm,

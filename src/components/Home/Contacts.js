@@ -24,7 +24,7 @@ function Contacts({ searchContact }) {
 
 	useEffect(() => {
 		if (response && !error) {
-			const parsedResponse = response.contacts.map((contact) => {
+			const parsedResponse = response.contacts?.map((contact) => {
 				return {
 					...contact,
 					message: {
@@ -33,7 +33,7 @@ function Contacts({ searchContact }) {
 					},
 				};
 			});
-			dispatch(addContact(parsedResponse));
+			dispatch(addContact(parsedResponse ?? []));
 		}
 	}, [response]);
 
@@ -62,7 +62,7 @@ function Contacts({ searchContact }) {
 			<hr />
 			{response && searchContact !== ""
 				? response.contacts
-						.filter((contact) =>
+						?.filter((contact) =>
 							contact.name
 								.toLowerCase()
 								.includes(searchContact.toLowerCase()),
@@ -87,7 +87,7 @@ function Contacts({ searchContact }) {
 								/>
 							);
 						})
-				: response.contacts.map((contact) => {
+				: response.contacts?.map((contact) => {
 						const nameInitials = parseInitials(contact.name);
 						return (
 							<Contact

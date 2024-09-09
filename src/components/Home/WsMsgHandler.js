@@ -31,7 +31,7 @@ function WsMsgHandler({ wsConn, userId }) {
 
 	function makeConn() {
 		wsConn.current = new WebSocket(
-			`wss://${process.env.REACT_APP_BACKEND_DOM_API}/ws`,
+			`ws://${process.env.REACT_APP_BACKEND_DOM_API}/ws`,
 		);
 		wsConn.current.addEventListener("open", onOpen);
 		wsConn.current.addEventListener("close", closeRetryListener);

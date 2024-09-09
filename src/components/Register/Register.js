@@ -110,7 +110,7 @@ function Register() {
 			regForm.append("profilePic", userDetails.profilePic);
 		}
 		// registerUser(regForm);
-		fetch(`https://${process.env.REACT_APP_BACKEND_DOM_API}/register`, {
+		fetch(`http://${process.env.REACT_APP_BACKEND_DOM_API}/register`, {
 			method: "POST",
 			body: regForm,
 		})

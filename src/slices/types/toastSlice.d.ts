@@ -1,4 +1,5 @@
-type ToastType = "info" | "err" | "suc" | "warn" | "err" | "message";
+type ToastType = "info" | "error" | "success" | "warning" | "error" | "message";
+
 interface ToastState {
     type: ToastType;
     title: string;
@@ -10,4 +11,4 @@ interface ToastState {
     };
 }
 
-interface ToastPayload extends ToastState { }
+interface ToastPayload extends ToastState {}

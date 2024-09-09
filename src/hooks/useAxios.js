@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { setToast } from "../slices/toastSlice";
 
 export const axiosInstance = axios.create({
-	baseURL: `https://${process.env.REACT_APP_BACKEND_DOM_API}`, //"http://localhost:80/api"
+	baseURL: `http://${process.env.REACT_APP_BACKEND_DOM_API}`, //"http://localhost:80/api"
 });
 
 axiosInstance.interceptors.response.use(

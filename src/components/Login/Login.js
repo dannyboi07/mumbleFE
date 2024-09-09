@@ -34,7 +34,7 @@ function Login() {
 			userDetails.password.trim() !== ""
 		) {
 			// const user_tz = Intl.DateTimeFormat().resolvedOptions().timeZone
-			fetch(`https://${process.env.REACT_APP_BACKEND_DOM_API}/login`, {
+			fetch(`http://${process.env.REACT_APP_BACKEND_DOM_API}/login`, {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
