@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import axiosInstance from "./axios";
+import axiosInstance from ".";
 import { useState } from "react";
 
 interface ApiProps {
