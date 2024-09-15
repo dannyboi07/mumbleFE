@@ -1,8 +1,13 @@
 import axios from "axios";
 import type { AxiosInstance, AxiosError } from "axios";
+import config from "../config";
+
+function getApiUrl(): string {
+    return `${config.ENV === "production" ? "https" : "http"}://${config.BASE_API_URL}`;
+}
 
 const axiosInstance: AxiosInstance = axios.create({
-    baseURL: `http://${process.env.REACT_APP_BACKEND_DOM_API}`, //"http://localhost:80/api"
+    baseURL: getApiUrl(), //"http://localhost:80/api"
 });
 
 axiosInstance.interceptors.response.use(
@@ -32,4 +37,5 @@ axiosInstance.interceptors.response.use(
     },
 );
 
+export { getApiUrl };
 export default axiosInstance;
